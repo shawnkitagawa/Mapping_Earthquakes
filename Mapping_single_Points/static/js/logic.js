@@ -22,7 +22,14 @@ let map = L.map("mapid").setView([34.0522,-118.2437], 4);
   cityData.forEach(function(city)
   {
     console.log(city);
-    L.marker(city.location).addTo(map);
+    L.circleMarker(city.location,
+        {
+            radius: city.population/100000,
+            color:"orange"
+        })
+    .bindPopup("<h2>" + city.city + ", "  + city.state + "</h2> <hr> <h3>Population " + city.population + "</h3>")
+    .addTo(map);
+
   
   });
 
